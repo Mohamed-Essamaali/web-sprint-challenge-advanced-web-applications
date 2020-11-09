@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
-import {useParams} from 'react-router-dom'
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+
 
 const initialColor = {
   color: "",
@@ -12,6 +11,7 @@ const ColorList = ({ colors, updateColors }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+ 
   // let {id}= useParams();
   // let activeColor = colors.find(item=>item.id===colorToEdit.id)
   // console.log('active color id ',activeColor)
@@ -31,7 +31,8 @@ const ColorList = ({ colors, updateColors }) => {
     .then(res=>{
       updateColors(colors.map(color => 
         color.id === res.data.id ? res.data : color
-    ))
+    ));
+        setEditing(false)
     })
     .catch(err=>{
       console.log(err)

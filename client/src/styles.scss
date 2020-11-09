@@ -14,11 +14,24 @@ body,
   font-family: "Montserrat", sans-serif;
   text-align: center;
   display: flex;
+ 
 
   svg {
     height: 100%;
   }
 }
+.App .links {
+  width: 15%;
+}
+.App .links a {
+  display: block;
+  padding: 3%;
+  text-decoration:none;
+ 
+  color:#125897;
+  font-weight:600
+}
+.App .links a:hover {background:#125897;color:white}
 
 .spacer {
   height: 100%;
