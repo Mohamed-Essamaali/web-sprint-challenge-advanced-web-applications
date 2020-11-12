@@ -15,23 +15,23 @@ const[info,setInfo] =useState({
     setInfo({...info,[e.target.name]:e.target.value})
     // console.log(info)
   }
-  const handleSubmit=e=>{
-    e.preventDefault();
-    axiosWithAuth()
-    .post(`http://localhost:5000/api/login`,info)
-    .then(res=>{
-      localStorage.setItem('token',res.data.payload);
-      push('/bubblePage')
-      //reset the form
-      setInfo({
-        username:'',
-        password:''
-      })
-    })
-    .catch(err=>{
-      console.log('Err is ',err)
-  })
-  }
+  // const handleSubmit=e=>{
+  //   e.preventDefault();
+  //   axiosWithAuth()
+  //   .post(`http://localhost:5000/api/login`,info)
+  //   .then(res=>{
+  //     localStorage.setItem('token',res.data.payload);
+  //     push('/bubblePage')
+  //     //reset the form
+  //     setInfo({
+  //       username:'',
+  //       password:''
+  //     })
+  //   })
+  //   .catch(err=>{
+  //     console.log('Err is ',err)
+  // })
+  // }
   return (
     <>
       <h1>Welcome to the Bubble App!</h1>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import AddForm from "./addForm";
 
 
 const initialColor = {
@@ -10,6 +11,7 @@ const initialColor = {
 const ColorList = ({ colors, updateColors }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
+  const[adding,SetAdding] =useState(false)
   const [colorToEdit, setColorToEdit] = useState(initialColor);
  
   // let {id}= useParams();
@@ -50,6 +52,18 @@ const ColorList = ({ colors, updateColors }) => {
       }))
     })
   };
+  const addBubble =newBubble=>{
+    axiosWithAuth()
+    .post(`http://localhost:5000/api/colors/`,newBubble)
+    .then(res => {
+      console.log("Add new bubble ", res.data)
+      updateColors() 
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+
+  }
 
   return (
     <div className="colors-wrap">
@@ -105,8 +119,15 @@ const ColorList = ({ colors, updateColors }) => {
           </div>
         </form>
       )}
+
+      {adding==false ? <AddForm addBubble={addBubble}
+      colorToEdit={colorToEdit}
+      setColorToEdit={setColorToEdit}
+      setEditing={setEditing} adding={adding} />:null} 
       <div className="spacer" />
       {/* stretch - build another form here to add a color */}
+      
+
     </div>
   );
 };
